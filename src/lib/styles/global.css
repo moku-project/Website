@@ -1,0 +1,132 @@
+:root {
+	--bg-void: #080808;
+	--bg-base: #0c0c0c;
+	--bg-surface: #101010;
+	--bg-raised: #151515;
+	--bg-overlay: #1a1a1a;
+	--bg-subtle: #202020;
+
+	--border-dim: #1c1c1c;
+	--border-base: #242424;
+	--border-strong: #2e2e2e;
+	--border-focus: #4a5c4a;
+
+	--text-primary: #f0efec;
+	--text-secondary: #c8c6c0;
+	--text-muted: #8a8880;
+	--text-faint: #4e4d4a;
+
+	--accent: #6b8f6b;
+	--accent-dim: #2a3d2a;
+	--accent-muted: #1a251a;
+	--accent-fg: #a8c4a8;
+	--accent-bright: #8fb88f;
+
+	/* the logo's leaf gradient — the one deliberately vivid note in an
+	   otherwise muted palette; reserved for hero/CTA accents, not chrome */
+	--leaf-bright: #6fe6b3;
+	--leaf-mid: #2fa374;
+	--leaf-dark: #124a33;
+
+	--radius-sm: 3px;
+	--radius-md: 5px;
+	--radius-lg: 7px;
+	--radius-xl: 10px;
+	--radius-2xl: 14px;
+	--radius-full: 9999px;
+
+	--sp-1: 4px;
+	--sp-2: 8px;
+	--sp-3: 12px;
+	--sp-4: 16px;
+	--sp-5: 20px;
+	--sp-6: 24px;
+	--sp-8: 32px;
+	--sp-10: 40px;
+
+	--font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+
+	--container: 1120px;
+
+	--sp-12: 48px;
+	--sp-16: 64px;
+	--sp-20: 80px;
+	--sp-24: 96px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background: var(--bg-void);
+	color-scheme: dark;
+}
+
+body {
+	margin: 0;
+	background: var(--bg-void);
+	color: var(--text-primary);
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p {
+	margin: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+button {
+	font-family: inherit;
+}
+
+::selection {
+	background: var(--accent-dim);
+	color: var(--text-primary);
+}
+
+section {
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	width: 100%;
+	max-width: var(--container);
+	padding: 0 var(--sp-6);
+}
+
+.eyebrow {
+	font-family: var(--font-mono);
+	font-size: 13px;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	color: var(--leaf-mid);
+	text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		transition-duration: 0.001ms !important;
+	}
+}
