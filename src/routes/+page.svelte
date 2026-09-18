@@ -7,7 +7,7 @@
 	<title>Moku — Fast, minimal reader</title>
 	<meta
 		name="description"
-		content="Moku is a lightweight manga, novel, and anime reader for your own Tsunagu server, with extension support and no Electron overhead."
+		content="Moku is a standalone manga, novel, and anime reader with extension support and no Electron overhead — install it and start reading."
 	/>
 	<style>
 		html,

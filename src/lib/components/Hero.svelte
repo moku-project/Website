@@ -64,7 +64,9 @@
 				<h1>{current.title}</h1>
 				<p class="sub">{current.description}</p>
 			</div>
-			<CardCarousel count={CARD_COUNT} {index} />
+			<div class="card-area">
+				<CardCarousel count={CARD_COUNT} {index} />
+			</div>
 			<ProgressBar count={CARD_COUNT} {progress} />
 		</div>
 	</div>
@@ -72,7 +74,9 @@
 
 <style>
 	.hero {
-		position: relative;
+		position: fixed;
+		inset: 0;
+		z-index: 0;
 		width: 100%;
 		height: 100svh;
 		overflow: hidden;
@@ -85,7 +89,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 100px var(--sp-4) 130px;
+		padding: clamp(269px, 29.9vh, 359px) var(--sp-4) clamp(40px, 8vh, 90px);
 	}
 
 	.group {
@@ -93,12 +97,22 @@
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
+		height: 100%;
+	}
+
+	.card-area {
+		flex: 1 1 auto;
+		min-height: 0;
+		width: 100%;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
 	}
 
 	.heading {
 		flex-shrink: 0;
 		text-align: center;
-		margin-bottom: var(--sp-12);
+		margin-bottom: clamp(13px, 3.4vh, 36px);
 		opacity: 1;
 		transition: opacity 180ms ease;
 	}

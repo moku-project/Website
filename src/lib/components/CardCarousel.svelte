@@ -115,8 +115,9 @@
 	.stage-card {
 		position: relative;
 		width: min(1500px, 80vw);
+		height: auto;
+		max-height: 100%;
 		aspect-ratio: 16 / 10;
-		max-height: 62vh;
 	}
 
 	.clip-bleed {

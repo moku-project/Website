@@ -109,7 +109,7 @@
 		top: var(--sp-6);
 		z-index: 40;
 		width: 100%;
-		padding: 0 var(--sp-4);
+		padding: var(--sp-5) var(--sp-4) 0;
 	}
 
 	.nav {

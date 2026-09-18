@@ -8,8 +8,8 @@ export interface FeatureCard {
 export const FEATURE_CARDS: FeatureCard[] = [
 	{
 		eyebrow: 'Moku',
-		title: 'A fast, minimal reader for your own server.',
-		description: 'Moku is a lightweight manga, novel, and anime reader for your own Tsunagu server, with extension support and no Electron overhead.',
+		title: 'A fast, minimal reader. Zero setup.',
+		description: 'Moku is a standalone manga, novel, and anime reader with extension support and no Electron overhead — install it and start reading.',
 		image: '/screenshots/search.webp'
 	},
 	{
