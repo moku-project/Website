@@ -29,6 +29,7 @@
 	}
 
 	let copied = $state(false);
+	let sidebarOpen = $state(false);
 
 	function copyPage() {
 		if (!current) return;
@@ -122,76 +123,111 @@
 <div class="docs-shell">
 	<aside class="sidebar">
 		<div class="sidebar-inner">
-			<a href="/" class="brand">
-				<img src="/moku-leaf.svg" alt="" width="33" height="33" />
-				<span>Moku <span class="brand-dim">Docs</span></span>
-			</a>
+			<div class="sidebar-top">
+				<a href="/" class="brand">
+					<img src="/moku-leaf.svg" alt="" width="33" height="33" />
+					<span>Moku <span class="brand-dim">Docs</span></span>
+				</a>
 
-			<label class="search">
-				<svg viewBox="0 0 24 24" width="21" height="21" fill="none" class="search-icon" aria-hidden="true">
-					<circle cx="10.5" cy="10.5" r="7" stroke="currentColor" stroke-width="1.8" />
-					<line
-						x1="20"
-						y1="20"
-						x2="15.8"
-						y2="15.8"
-						stroke="currentColor"
-						stroke-width="1.8"
-						stroke-linecap="round"
-					/>
-				</svg>
-				<input type="text" placeholder="Search docs" bind:value={query} />
-			</label>
-
-			<nav aria-label="Docs sections">
-				{#each DOC_GROUPS as group}
-					{@const pages = groupPages(group)}
-					{#if pages.length}
-						<div class="group">
-							<span class="group-title">
-								{@render groupIcon(group)}
-								{group}
-							</span>
-							<ul>
-								{#each pages as p}
-									<li>
-										<a href={docHref(p.slug)} class:active={isActive(p.slug)}>{p.title}</a>
-									</li>
-								{/each}
-							</ul>
-						</div>
-					{/if}
-				{/each}
-			</nav>
-
-			<a href="/" class="back-link">
-				<svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
-					<path
-						d="M15 6l-6 6 6 6"
-						stroke="currentColor"
-						stroke-width="1.8"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					/>
-				</svg>
-				Back to moku.app
-			</a>
-
-			<div class="social-row">
-				<a href="https://github.com/moku-project/Moku" target="_blank" rel="noreferrer" aria-label="GitHub">
-					<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+				<button
+					type="button"
+					class="sidebar-toggle"
+					aria-expanded={sidebarOpen}
+					aria-controls="sidebar-collapsible"
+					onclick={() => (sidebarOpen = !sidebarOpen)}
+				>
+					<span>{current ? current.title : 'Browse docs'}</span>
+					<svg
+						class="chevron"
+						class:open={sidebarOpen}
+						viewBox="0 0 24 24"
+						width="18"
+						height="18"
+						fill="none"
+						aria-hidden="true"
+					>
 						<path
-							d="M12 2C6.48 2 2 6.58 2 12.2c0 4.49 2.87 8.3 6.84 9.64.5.1.68-.22.68-.49v-1.9c-2.78.62-3.37-1.36-3.37-1.36-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.74 0 0 .84-.28 2.75 1.05a9.34 9.34 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.55 1.43.2 2.48.1 2.74.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.2C22 6.58 17.52 2 12 2Z"
+							d="M6 9l6 6 6-6"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							stroke-linejoin="round"
 						/>
 					</svg>
-				</a>
-				<a href="https://discord.gg/x97hj8zR72" target="_blank" rel="noreferrer" aria-label="Discord">
-					<svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
-						<path
-							d="M20.3 5.3A18 18 0 0 0 15.8 4c-.2.4-.5.9-.6 1.3a16.8 16.8 0 0 0-6.4 0A9 9 0 0 0 8.2 4 18 18 0 0 0 3.7 5.3C1 9.3.3 13.2.6 17c1.9 1.4 3.7 2.2 5.5 2.8.4-.6.8-1.2 1.1-1.9-.6-.2-1.2-.5-1.7-.9l.4-.3c3.4 1.6 7.1 1.6 10.4 0l.4.3c-.5.4-1.1.7-1.7.9.3.7.7 1.3 1.1 1.9 1.8-.6 3.6-1.4 5.5-2.8.4-4.4-.7-8.3-2.8-11.7ZM9.7 14.6c-1 0-1.8-.9-1.8-2.1 0-1.1.8-2.1 1.8-2.1 1 0 1.9 1 1.8 2.1 0 1.2-.8 2.1-1.8 2.1Zm5.1 0c-1 0-1.8-.9-1.8-2.1 0-1.1.8-2.1 1.8-2.1 1 0 1.9 1 1.8 2.1 0 1.2-.8 2.1-1.8 2.1Z"
+				</button>
+			</div>
+
+			<div id="sidebar-collapsible" class="sidebar-collapsible" class:collapsed={!sidebarOpen}>
+				<label class="search">
+					<svg viewBox="0 0 24 24" width="21" height="21" fill="none" class="search-icon" aria-hidden="true">
+						<circle cx="10.5" cy="10.5" r="7" stroke="currentColor" stroke-width="1.8" />
+						<line
+							x1="20"
+							y1="20"
+							x2="15.8"
+							y2="15.8"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
 						/>
 					</svg>
+					<input type="text" placeholder="Search docs" bind:value={query} />
+				</label>
+
+				<nav aria-label="Docs sections">
+					{#each DOC_GROUPS as group}
+						{@const pages = groupPages(group)}
+						{#if pages.length}
+							<div class="group">
+								<span class="group-title">
+									{@render groupIcon(group)}
+									{group}
+								</span>
+								<ul>
+									{#each pages as p}
+										<li>
+											<a
+												href={docHref(p.slug)}
+												class:active={isActive(p.slug)}
+												onclick={() => (sidebarOpen = false)}>{p.title}</a
+											>
+										</li>
+									{/each}
+								</ul>
+							</div>
+						{/if}
+					{/each}
+				</nav>
+
+				<a href="/" class="back-link">
+					<svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
+						<path
+							d="M15 6l-6 6 6 6"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+					Back to moku.app
 				</a>
+
+				<div class="social-row">
+					<a href="https://github.com/moku-project/Moku" target="_blank" rel="noreferrer" aria-label="GitHub">
+						<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+							<path
+								d="M12 2C6.48 2 2 6.58 2 12.2c0 4.49 2.87 8.3 6.84 9.64.5.1.68-.22.68-.49v-1.9c-2.78.62-3.37-1.36-3.37-1.36-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.74 0 0 .84-.28 2.75 1.05a9.34 9.34 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.55 1.43.2 2.48.1 2.74.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.2C22 6.58 17.52 2 12 2Z"
+							/>
+						</svg>
+					</a>
+					<a href="https://discord.gg/x97hj8zR72" target="_blank" rel="noreferrer" aria-label="Discord">
+						<svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true">
+							<path
+								d="M20.3 5.3A18 18 0 0 0 15.8 4c-.2.4-.5.9-.6 1.3a16.8 16.8 0 0 0-6.4 0A9 9 0 0 0 8.2 4 18 18 0 0 0 3.7 5.3C1 9.3.3 13.2.6 17c1.9 1.4 3.7 2.2 5.5 2.8.4-.6.8-1.2 1.1-1.9-.6-.2-1.2-.5-1.7-.9l.4-.3c3.4 1.6 7.1 1.6 10.4 0l.4.3c-.5.4-1.1.7-1.7.9.3.7.7 1.3 1.1 1.9 1.8-.6 3.6-1.4 5.5-2.8.4-4.4-.7-8.3-2.8-11.7ZM9.7 14.6c-1 0-1.8-.9-1.8-2.1 0-1.1.8-2.1 1.8-2.1 1 0 1.9 1 1.8 2.1 0 1.2-.8 2.1-1.8 2.1Zm5.1 0c-1 0-1.8-.9-1.8-2.1 0-1.1.8-2.1 1.8-2.1 1 0 1.9 1 1.8 2.1 0 1.2-.8 2.1-1.8 2.1Z"
+							/>
+						</svg>
+					</a>
+				</div>
 			</div>
 		</div>
 	</aside>
@@ -314,6 +350,14 @@
 		overflow-y: auto;
 	}
 
+	.sidebar-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		margin-bottom: 30px;
+	}
+
 	.brand {
 		display: flex;
 		align-items: center;
@@ -322,12 +366,49 @@
 		font-weight: 700;
 		letter-spacing: -0.01em;
 		color: var(--text-primary);
-		margin-bottom: 30px;
 	}
 
 	.brand-dim {
 		font-weight: 500;
 		color: var(--text-muted);
+	}
+
+	.sidebar-toggle {
+		display: none;
+		align-items: center;
+		gap: 8px;
+		max-width: 220px;
+		padding: 10px 14px;
+		border-radius: 8px;
+		border: 1px solid var(--border-base);
+		background: var(--bg-surface);
+		color: var(--text-primary);
+		font: inherit;
+		font-size: 15px;
+		font-weight: 500;
+		cursor: pointer;
+	}
+
+	.sidebar-toggle span {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.chevron {
+		flex-shrink: 0;
+		transition: transform 0.15s ease;
+	}
+
+	.chevron.open {
+		transform: rotate(180deg);
+	}
+
+	.sidebar-collapsible {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		min-height: 0;
 	}
 
 	.search {
@@ -594,13 +675,31 @@
 		.sidebar-inner {
 			position: static;
 			height: auto;
-			padding: 30px 0;
+			padding: 24px 0;
 			overflow: visible;
+		}
+
+		.sidebar-top {
+			margin-bottom: 0;
+		}
+
+		.sidebar-toggle {
+			display: flex;
+		}
+
+		.sidebar-collapsible {
+			display: flex;
+			flex-direction: column;
+			margin-top: 20px;
+		}
+
+		.sidebar-collapsible.collapsed {
+			display: none;
 		}
 
 		.content {
 			max-width: none;
-			padding: 48px 0 96px;
+			padding: 40px 0 96px;
 		}
 	}
 </style>

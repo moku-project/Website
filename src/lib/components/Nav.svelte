@@ -95,6 +95,22 @@
 						>
 					{/if}
 				{/each}
+
+				<button
+					type="button"
+					class="mobile-download"
+					onclick={() => {
+						menuOpen = false;
+						downloadOpen = true;
+					}}
+				>
+					<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+						<path
+							d="M12 3a1 1 0 0 1 1 1v9.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 1 1 1.414-1.414L11 13.586V4a1 1 0 0 1 1-1ZM5 19a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2H5Z"
+						/>
+					</svg>
+					Download
+				</button>
 			</nav>
 		{/if}
 	</header>
@@ -238,7 +254,7 @@
 		}
 
 		.nav {
-			padding: 18px 22px;
+			padding: 16px 18px;
 			gap: 18px;
 		}
 
@@ -246,9 +262,8 @@
 			gap: 13px;
 		}
 
-		.solid-btn {
-			padding: 13px 18px;
-			font-size: 15px;
+		.actions .solid-btn {
+			display: none;
 		}
 
 		.mobile-links {
@@ -268,6 +283,22 @@
 			font-weight: 500;
 			text-align: left;
 			color: var(--text-secondary);
+		}
+
+		.mobile-download {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 9px;
+			margin-top: 9px;
+			padding: 14px 18px;
+			border-radius: 8px;
+			border: none;
+			font-size: 16px;
+			font-weight: 600;
+			color: var(--bg-void);
+			background: var(--text-primary);
+			cursor: pointer;
 		}
 	}
 </style>
