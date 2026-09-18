@@ -28,11 +28,16 @@
 		'linux-flatpak': { os: 'linux', label: 'Linux', detail: 'Flatpak', match: /\.flatpak$/i }
 	};
 
-	let status = $state<'loading' | 'ready' | 'error'>('loading');
+	let status = $state<'loading' | 'ready' | 'error' | 'mobile'>('loading');
 	let version = $state('');
 	let publishedAt = $state('');
 	let assets = $state<Asset[]>([]);
 	let detected = $state<Platform | null>(null);
+
+	function isMobile(): boolean {
+		const ua = navigator.userAgent;
+		return /Android|iPhone|iPad|iPod/i.test(ua);
+	}
 
 	function detectPlatform(): Platform {
 		const ua = navigator.userAgent;
@@ -57,6 +62,12 @@
 
 	$effect(() => {
 		if (!open || status !== 'loading') return;
+
+		if (isMobile()) {
+			status = 'mobile';
+			return;
+		}
+
 		detected = detectPlatform();
 
 		fetch(`https://api.github.com/repos/${REPO}/releases/latest`)
@@ -115,7 +126,7 @@
 			<p class="meta">
 				{#if status === 'ready'}
 					Version {version} · {formatDate(publishedAt)} · free and open source
-				{:else if status === 'error'}
+				{:else if status === 'error' || status === 'mobile'}
 					Free and open source
 				{:else}
 					Checking latest release…
@@ -124,7 +135,12 @@
 		</div>
 	</div>
 
-	{#if status === 'error'}
+	{#if status === 'mobile'}
+		<p class="intro">
+			Moku doesn't support mobile yet — head to a desktop (Windows, macOS, or Linux) to download
+			it. Mobile support is coming soon.
+		</p>
+	{:else if status === 'error'}
 		<p class="intro">
 			Couldn't reach GitHub to fetch the latest release. Grab it directly from
 			<a href={RELEASES_URL} target="_blank" rel="noreferrer">the releases page</a>.

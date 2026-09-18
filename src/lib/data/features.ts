@@ -7,9 +7,9 @@ export interface FeatureCard {
 
 export const FEATURE_CARDS: FeatureCard[] = [
 	{
-		eyebrow: 'Search',
-		title: 'One search bar, every source.',
-		description: 'Search by title, tag, or source name and get matching results from all of your sources in one list.',
+		eyebrow: 'Moku',
+		title: 'A fast, minimal reader for your own server.',
+		description: 'Moku is a lightweight manga, novel, and anime reader for your own Tsunagu server, with extension support and no Electron overhead.',
 		image: '/screenshots/search.webp'
 	},
 	{

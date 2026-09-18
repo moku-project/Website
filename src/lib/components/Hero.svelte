@@ -121,4 +121,22 @@
 		font-size: 15px;
 		color: var(--text-secondary);
 	}
+
+	@media (max-width: 640px) {
+		.stage {
+			padding: 90px var(--sp-3) 100px;
+		}
+
+		.heading {
+			margin-bottom: var(--sp-8);
+		}
+
+		.heading h1 {
+			font-size: clamp(19px, 5.5vw, 24px);
+		}
+
+		.sub {
+			font-size: 13.5px;
+		}
+	}
 </style>

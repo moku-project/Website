@@ -11,6 +11,12 @@
 
 	let extensionsOpen = $state(false);
 	let downloadOpen = $state(false);
+	let menuOpen = $state(false);
+
+	function openExtensions() {
+		menuOpen = false;
+		extensionsOpen = true;
+	}
 </script>
 
 <div class="nav-slot">
@@ -45,7 +51,52 @@
 				</svg>
 				Download
 			</button>
+
+			<button
+				type="button"
+				class="menu-btn"
+				aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+				aria-expanded={menuOpen}
+				onclick={() => (menuOpen = !menuOpen)}
+			>
+				<svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+					{#if menuOpen}
+						<path
+							d="M6 6l12 12M18 6L6 18"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+						/>
+					{:else}
+						<path
+							d="M4 7h16M4 12h16M4 17h16"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+						/>
+					{/if}
+				</svg>
+			</button>
 		</div>
+
+		{#if menuOpen}
+			<nav class="mobile-links" aria-label="Primary mobile">
+				{#each links as link}
+					{#if link.action === 'extensions'}
+						<button type="button" class="link-btn" onclick={openExtensions}>
+							{link.label}
+						</button>
+					{:else}
+						<a
+							href={link.href}
+							target={link.external ? '_blank' : undefined}
+							rel={link.external ? 'noreferrer' : undefined}
+							onclick={() => (menuOpen = false)}>{link.label}</a
+						>
+					{/if}
+				{/each}
+			</nav>
+		{/if}
 	</header>
 </div>
 
@@ -62,10 +113,12 @@
 	}
 
 	.nav {
+		position: relative;
 		width: 100%;
 		max-width: 1344px;
 		margin: 0 auto;
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		gap: var(--sp-8);
 		padding: var(--sp-4) var(--sp-8);
@@ -157,9 +210,64 @@
 		opacity: 0.88;
 	}
 
+	.menu-btn {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		border-radius: var(--radius-lg);
+		border: 1px solid var(--border-base);
+		background: none;
+		color: var(--text-primary);
+		cursor: pointer;
+		flex-shrink: 0;
+	}
+
+	.mobile-links {
+		display: none;
+	}
+
 	@media (max-width: 720px) {
 		.links {
 			display: none;
+		}
+
+		.menu-btn {
+			display: flex;
+		}
+
+		.nav {
+			padding: var(--sp-4) var(--sp-5);
+			gap: var(--sp-4);
+		}
+
+		.actions {
+			gap: var(--sp-3);
+		}
+
+		.solid-btn {
+			padding: var(--sp-3) var(--sp-4);
+			font-size: 14px;
+		}
+
+		.mobile-links {
+			display: flex;
+			flex-direction: column;
+			gap: var(--sp-1);
+			width: 100%;
+			margin-top: var(--sp-3);
+			padding-top: var(--sp-4);
+			border-top: 1px solid var(--border-dim);
+		}
+
+		.mobile-links a,
+		.mobile-links .link-btn {
+			padding: var(--sp-3) var(--sp-2);
+			font-size: 16px;
+			font-weight: 500;
+			text-align: left;
+			color: var(--text-secondary);
 		}
 	}
 </style>
