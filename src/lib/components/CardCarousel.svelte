@@ -114,7 +114,7 @@
 <style>
 	.stage-card {
 		position: relative;
-		width: min(1650px, 88vw);
+		width: min(1650px, 88vw, calc((var(--card-area-h, 620px) - 8px) * 1.6));
 		height: auto;
 		max-height: 100%;
 		aspect-ratio: 16 / 10;

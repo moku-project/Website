@@ -52,6 +52,8 @@
 
 	const progress = $derived(index / (CARD_COUNT - 1));
 	const current = $derived(FEATURE_CARDS[headingIndex]);
+
+	let cardAreaHeight = $state(620);
 </script>
 
 <svelte:body onwheel={onWheel} ontouchstart={onTouchStart} ontouchend={onTouchEnd} />
@@ -64,7 +66,7 @@
 				<h1>{current.title}</h1>
 				<p class="sub">{current.description}</p>
 			</div>
-			<div class="card-area">
+			<div class="card-area" bind:clientHeight={cardAreaHeight} style="--card-area-h: {cardAreaHeight}px">
 				<CardCarousel count={CARD_COUNT} {index} />
 			</div>
 			<ProgressBar count={CARD_COUNT} {progress} />
