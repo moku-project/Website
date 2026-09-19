@@ -20,12 +20,12 @@
 <style>
 	.progress-bar {
 		display: flex;
-		gap: 9px;
-		margin-top: 22px;
+		gap: var(--sp-2);
+		margin-top: var(--sp-5);
 	}
 
 	.segment {
-		width: 35px;
+		width: 32px;
 		height: 3px;
 		border-radius: 999px;
 		background: color-mix(in srgb, var(--text-primary) 18%, transparent);

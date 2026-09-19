@@ -40,12 +40,12 @@
 
 <style>
 	h2 {
-		font-size: 31.5px;
+		font-size: 21px;
 		font-weight: 700;
 		letter-spacing: -0.01em;
 		color: var(--text-primary);
-		margin: 60px 0 24px;
-		scroll-margin-top: 48px;
+		margin: var(--sp-10) 0 var(--sp-4);
+		scroll-margin-top: var(--sp-8);
 	}
 
 	h2:first-child {
@@ -53,22 +53,22 @@
 	}
 
 	p {
-		font-size: 22.5px;
+		font-size: 15px;
 		line-height: 1.7;
 		color: var(--text-secondary);
-		margin-bottom: 24px;
+		margin-bottom: var(--sp-4);
 	}
 
 	ul {
-		margin: 0 0 24px;
-		padding-left: 30px;
+		margin: 0 0 var(--sp-4);
+		padding-left: var(--sp-5);
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: var(--sp-2);
 	}
 
 	li {
-		font-size: 22.5px;
+		font-size: 15px;
 		line-height: 1.65;
 		color: var(--text-secondary);
 	}
@@ -78,9 +78,9 @@
 	:global(td code),
 	:global(.note code) {
 		font-family: var(--font-mono);
-		font-size: 19.5px;
-		padding: 3px 9px;
-		border-radius: 4.5px;
+		font-size: 13px;
+		padding: 2px 6px;
+		border-radius: var(--radius-sm);
 		background: color-mix(in srgb, var(--text-primary) 8%, transparent);
 		color: var(--text-primary);
 		white-space: nowrap;
@@ -110,9 +110,9 @@
 	}
 
 	pre {
-		margin: 0 0 24px;
-		padding: 24px 30px;
-		border-radius: 10.5px;
+		margin: 0 0 var(--sp-4);
+		padding: var(--sp-4) var(--sp-5);
+		border-radius: var(--radius-lg);
 		border: 1px solid var(--border-base);
 		background: var(--bg-surface);
 		overflow-x: auto;
@@ -120,19 +120,19 @@
 
 	pre code {
 		font-family: var(--font-mono);
-		font-size: 20px;
+		font-size: 13.5px;
 		line-height: 1.6;
 		white-space: pre;
 		color: var(--text-primary);
 	}
 
 	.note {
-		margin-bottom: 24px;
-		padding: 24px 30px;
-		border-radius: 10.5px;
+		margin-bottom: var(--sp-4);
+		padding: var(--sp-4) var(--sp-5);
+		border-radius: var(--radius-lg);
 		border: 1px solid color-mix(in srgb, var(--leaf-mid) 30%, transparent);
 		background: color-mix(in srgb, var(--leaf-dark) 35%, transparent);
-		font-size: 21px;
+		font-size: 14px;
 		line-height: 1.6;
 		color: var(--text-secondary);
 	}
@@ -140,7 +140,7 @@
 	table {
 		width: 100%;
 		border-collapse: collapse;
-		margin-bottom: 24px;
+		margin-bottom: var(--sp-4);
 	}
 
 	tr {
@@ -152,8 +152,8 @@
 	}
 
 	td {
-		padding: 18px 12px;
-		font-size: 21px;
+		padding: var(--sp-3) var(--sp-2);
+		font-size: 14px;
 		vertical-align: top;
 	}
 

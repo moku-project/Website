@@ -91,7 +91,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: clamp(296px, 29.9vh, 395px) 18px clamp(44px, 8vh, 99px);
+		padding: clamp(269px, 29.9vh, 359px) var(--sp-4) clamp(40px, 8vh, 90px);
 	}
 
 	.group {
@@ -114,7 +114,7 @@
 	.heading {
 		flex-shrink: 0;
 		text-align: center;
-		margin-bottom: clamp(14px, 3.4vh, 40px);
+		margin-bottom: clamp(13px, 3.4vh, 36px);
 		opacity: 1;
 		transition: opacity 180ms ease;
 	}
@@ -124,7 +124,7 @@
 	}
 
 	.heading h1 {
-		font-size: clamp(24px, 2.42vw, 31px);
+		font-size: clamp(22px, 2.2vw, 28px);
 		font-weight: 700;
 		letter-spacing: -0.02em;
 		line-height: 1.15;
@@ -133,8 +133,8 @@
 	}
 
 	.sub {
-		margin-top: 9px;
-		font-size: 16.5px;
+		margin-top: var(--sp-2);
+		font-size: 15px;
 		color: var(--text-secondary);
 	}
 

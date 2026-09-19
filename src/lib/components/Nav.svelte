@@ -22,7 +22,7 @@
 <div class="nav-slot">
 	<header class="nav">
 		<a href="/" class="brand">
-			<img src="/moku-leaf.svg" alt="" class="brand-mark" width="64" height="64" />
+			<img src="/moku-leaf.svg" alt="" class="brand-mark" width="58" height="58" />
 			<span>Moku</span>
 		</a>
 
@@ -122,23 +122,23 @@
 <style>
 	.nav-slot {
 		position: sticky;
-		top: 26px;
+		top: var(--sp-6);
 		z-index: 40;
 		width: 100%;
-		padding: 22px 18px 0;
+		padding: var(--sp-5) var(--sp-4) 0;
 	}
 
 	.nav {
 		position: relative;
 		width: 100%;
-		max-width: 1478px;
+		max-width: 1344px;
 		margin: 0 auto;
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 35px;
-		padding: 18px 35px;
-		border-radius: 15px;
+		gap: var(--sp-8);
+		padding: var(--sp-4) var(--sp-8);
+		border-radius: var(--radius-2xl);
 		border: 1px solid var(--border-base);
 		background: color-mix(in srgb, var(--bg-surface) 78%, transparent);
 		backdrop-filter: blur(16px);
@@ -148,15 +148,15 @@
 
 	.brand-mark {
 		transform: rotate(-15deg);
-		margin-left: -9px;
+		margin-left: -8px;
 	}
 
 	.brand {
 		display: flex;
 		align-items: center;
-		gap: 9px;
+		gap: var(--sp-2);
 		font-weight: 700;
-		font-size: 24px;
+		font-size: 22px;
 		letter-spacing: -0.015em;
 		font-feature-settings: 'ss01' on, 'cv05' on;
 		font-optical-sizing: auto;
@@ -166,12 +166,12 @@
 	.links {
 		display: flex;
 		align-items: center;
-		gap: 26px;
-		margin-left: 18px;
+		gap: var(--sp-6);
+		margin-left: var(--sp-4);
 	}
 
 	.links a {
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 500;
 		letter-spacing: -0.005em;
 		color: var(--text-secondary);
@@ -184,7 +184,7 @@
 
 	.link-btn {
 		font: inherit;
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 500;
 		letter-spacing: -0.005em;
 		color: var(--text-secondary);
@@ -202,7 +202,7 @@
 	.actions {
 		display: flex;
 		align-items: center;
-		gap: 22px;
+		gap: var(--sp-5);
 		margin-left: auto;
 		flex-shrink: 0;
 	}
@@ -210,13 +210,13 @@
 	.solid-btn {
 		display: flex;
 		align-items: center;
-		gap: 9px;
-		font-size: 17px;
+		gap: var(--sp-2);
+		font-size: 15.5px;
 		font-weight: 600;
 		color: var(--bg-void);
 		background: var(--text-primary);
-		padding: 13px 26px;
-		border-radius: 8px;
+		padding: var(--sp-3) var(--sp-6);
+		border-radius: var(--radius-lg);
 		border: none;
 		cursor: pointer;
 		transition: opacity 0.15s ease;
@@ -230,9 +230,9 @@
 		display: none;
 		align-items: center;
 		justify-content: center;
-		width: 40px;
-		height: 40px;
-		border-radius: 8px;
+		width: 36px;
+		height: 36px;
+		border-radius: var(--radius-lg);
 		border: 1px solid var(--border-base);
 		background: none;
 		color: var(--text-primary);
@@ -254,12 +254,12 @@
 		}
 
 		.nav {
-			padding: 16px 18px;
-			gap: 18px;
+			padding: var(--sp-4) var(--sp-5);
+			gap: var(--sp-4);
 		}
 
 		.actions {
-			gap: 13px;
+			gap: var(--sp-3);
 		}
 
 		.actions .solid-btn {
@@ -269,17 +269,17 @@
 		.mobile-links {
 			display: flex;
 			flex-direction: column;
-			gap: 4px;
+			gap: var(--sp-1);
 			width: 100%;
-			margin-top: 13px;
-			padding-top: 18px;
+			margin-top: var(--sp-3);
+			padding-top: var(--sp-4);
 			border-top: 1px solid var(--border-dim);
 		}
 
 		.mobile-links a,
 		.mobile-links .link-btn {
-			padding: 13px 9px;
-			font-size: 18px;
+			padding: var(--sp-3) var(--sp-2);
+			font-size: 16px;
 			font-weight: 500;
 			text-align: left;
 			color: var(--text-secondary);
@@ -289,12 +289,12 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			gap: 9px;
-			margin-top: 9px;
-			padding: 14px 18px;
-			border-radius: 8px;
+			gap: var(--sp-2);
+			margin-top: var(--sp-2);
+			padding: var(--sp-3) var(--sp-4);
+			border-radius: var(--radius-lg);
 			border: none;
-			font-size: 16px;
+			font-size: 14.5px;
 			font-weight: 600;
 			color: var(--bg-void);
 			background: var(--text-primary);

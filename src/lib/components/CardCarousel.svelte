@@ -114,7 +114,7 @@
 <style>
 	.stage-card {
 		position: relative;
-		width: min(1650px, 88vw, calc((var(--card-area-h, 620px) - 8px) * 1.6));
+		width: min(1500px, 80vw, calc((var(--card-area-h, 620px) - 8px) * 1.6));
 		height: auto;
 		max-height: 100%;
 		aspect-ratio: 16 / 10;
@@ -122,17 +122,17 @@
 
 	.clip-bleed {
 		position: absolute;
-		inset: -22px;
-		border-radius: 37px;
+		inset: -20px;
+		border-radius: calc(var(--radius-2xl) + 20px);
 		overflow: hidden;
 	}
 
 	.glass-card {
 		position: absolute;
-		inset: 22px;
+		inset: 20px;
 		display: flex;
-		padding: 35px 35px 0;
-		border-radius: 15px;
+		padding: var(--sp-8) var(--sp-8) 0;
+		border-radius: var(--radius-2xl);
 		overflow: hidden;
 		border: 1px solid color-mix(in srgb, var(--text-primary) 12%, transparent);
 		background: color-mix(in srgb, var(--bg-surface) 28%, transparent);
@@ -149,7 +149,7 @@
 	.card-img {
 		width: 100%;
 		height: 100%;
-		border-radius: 9px 9px 0 0;
+		border-radius: 8px 8px 0 0;
 		border: 1px solid color-mix(in srgb, var(--text-primary) 10%, transparent);
 		border-bottom: none;
 		object-fit: cover;
@@ -159,8 +159,8 @@
 
 	.tile-grid {
 		position: absolute;
-		inset: 22px;
-		border-radius: 15px;
+		inset: 20px;
+		border-radius: var(--radius-2xl);
 		overflow: visible;
 		backdrop-filter: blur(18px) saturate(1.3);
 		-webkit-backdrop-filter: blur(18px) saturate(1.3);
